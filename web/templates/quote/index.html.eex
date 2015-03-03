@@ -7,8 +7,14 @@
   </thead>
   <%= for q <- @quotes do %>
     <tr>
-      <td><%= q.saying %></td>
-      <td><%= q.author %></td>
+      <td>
+        <a href="<%=quote_path(@conn, :show, q.id) %>">
+          <%= q.saying %>
+        </a>
+      </td>
+      <td>
+        <%= q.author %>
+      </td>
     </tr>
   <% end %>
 </table>
