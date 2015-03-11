@@ -48,4 +48,11 @@ defmodule Splurty.QuoteController do
     Repo.update(q)
     redirect conn, to: quote_path(conn, :index)
   end
+
+  def destroy(conn, %{"id" => id}) do
+    {id, _} = Integer.parse(id)
+    q = Repo.get(Splurty.Quote, id)
+    Repo.delete(q)
+    redirect conn, to: quote_path(conn, :index)
+  end
 end
